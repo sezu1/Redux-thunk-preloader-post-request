@@ -1,14 +1,6 @@
 import {types} from "../types";
 
-
-function setPostActionCreators(data){
-    return {
-        type: types.SET_POSTS,
-        payload: data
-    }
-}
-
-function getPostsActionCreators(postData) {
+function setPostsActionCreators(postData) {
     return async function (dispatch) {
         dispatch(setLoader())
         try {
@@ -22,7 +14,6 @@ function getPostsActionCreators(postData) {
 
         const data = await response.json();
         console.log(data)
-        dispatch(setPostActionCreators(data))
     }
     catch (error) {
         console.log(error)
@@ -36,14 +27,14 @@ function getPostsActionCreators(postData) {
 
 function setLoader(){
     return{
-        type: types.SET_LOADING
+        type: types.ON_LOADING
     }
 }
 
 function stopLoader(){
     return{
-        type: types.STOP_LOADING
+        type: types.OFF_LOADING
     }
 }
 
-export {getPostsActionCreators, setPostActionCreators, stopLoader, setLoader};
+export {setPostsActionCreators, stopLoader, setLoader};

@@ -1,5 +1,5 @@
 export const types = {
     SET_POSTS: "SET_POSTS",
-    SET_LOADING: "SET_LOADING",
-    STOP_LOADING: "STOP_LOADING"
+    ON_LOADING: "ON_LOADING",
+    OFF_LOADING: "OFF_LOADING"
 }

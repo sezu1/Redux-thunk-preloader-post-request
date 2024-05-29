@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import {getPostsActionCreators} from "../store/actionCreators/postsActionCreator";
+import {setPostsActionCreators} from "../store/actionCreators/postsActionCreator";
 import {useDispatch, useSelector} from "react-redux";
-
-
 
 
 function CreatePost() {
@@ -12,6 +10,7 @@ function CreatePost() {
 
     const {posts} = useSelector((store) => store.postsR);
     const {loading} = useSelector((store) => store.postsR);
+
 
     function titleValue(e) {
         setTitle(e.target.value)
@@ -25,11 +24,10 @@ function CreatePost() {
    function submit(e){
        e.preventDefault();
        const postData = {title: valueTitle, body: valueBody}
-       dispatch(getPostsActionCreators(postData))
+       dispatch(setPostsActionCreators(postData))
        setTitle('')
        setBody('')
    }
-
 
 
     return (
@@ -46,6 +44,7 @@ function CreatePost() {
                     onChange={bodyValue}/>
                 <button>create</button>
             </form>
+
             {loading ? (
                 <div> loading ... </div>
                 ) : (
@@ -61,7 +60,6 @@ function CreatePost() {
                         : <div>no posts</div>
                       }
                 </ul>
-
             )}
         </div>
     );
